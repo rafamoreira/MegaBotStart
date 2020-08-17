@@ -9,6 +9,7 @@ Are you tired of building a starter base to research bots only to tear it down w
 
 You can choose to have faster worker speed unlocked as well.
 
+=======
 Now compatible with mods including Bob's Warfare/Logistics/Personal Equipment and Krastorio 2. Enabling those mods will give different armors and a different equipment grid.
 
 No existing items are changed. No new items are added.
