@@ -1,17 +1,17 @@
-Are you tired of building a starter base to research bots only to tear it down while waiting too long for bots to recharge? Mega Bot Start lets you start with construction bots in a Vanilla+ way. You'll start with:
+Are you tired of building a starter base to research bots and blueprints only to tear it down? Adequate Bot Start lets you start with construction bots in a Vanilla+ way. You'll start with:
 
-* Power armor Mk.2
-* 50-500 construction robots
-* 4 Personal roboport Mk.2
-* 4 Portable fusion reactors
-* 2 Battery Mk.2
-* 4 Energy Shield Mk.2
+* Modular armor
+* 20 construction robots
+* 2 personal roboports
+* 15 portable solar panels
+* A battery
 
-You can choose to have faster worker speed unlocked as well.
+No technology is unlocked. No existing items are changed. No new items are added.
 
-=======
-Now compatible with mods including Bob's Warfare/Logistics/Personal Equipment and Krastorio 2. Enabling those mods will give different armors and a different equipment grid.
+Forked from [Peppe Bot Start](https://mods.factorio.com/mods/Peppe/PeppeBotStart). The special starter modular armor was removed, along with the blueprints which aren't needed in 0.15.
 
-No existing items are changed. No new items are added.
+**Version History**
 
-Originally forked from [Peppe Bot Start](https://mods.factorio.com/mods/Peppe/PeppeBotStart), then again from [OneBit](https://mods.factorio.com/mods/onebit/AdequateBotStart). Changed from modular armor to Power armor Mk.2 and replaced solar panels with fusion reactors.
+* 0.16.1 - Fixed sandbox mode crash (thanks SirWayNe)
+* 0.16.0 - Updated to Factorio 0.16
+* 0.15.2 - Initial release

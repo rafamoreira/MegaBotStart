@@ -11,7 +11,7 @@ local ItemPrototypes = {
 	Nightvision = "night-vision-equipment", --2x2
 }
 
-local Items = {{ItemPrototypes["Robot"], settings.global["starting robot count"].value}}
+local Items
 local ArmorModules = {
 	--Vanilla, 10x10 grid
 	{Name = ItemPrototypes["Reactor"], Count = 4},
@@ -69,39 +69,43 @@ script.on_init(function(event)
 		}
 	end
 
+	Items = {{ItemPrototypes["Robot"], settings.global["starting robot count"].value}}
+
 	if not (ItemPrototypes["Fuel"] == "") then
 		table.insert(Items, {ItemPrototypes["Fuel"], 80})
 	end
 
-	--Freeplay only
-	if remote.interfaces["freeplay"] then
-		local StartingItems = remote.call("freeplay", "get_created_items")
-		for i, v in pairs(Items) do
-			StartingItems[v[1]] = v[2]
-		end
-		StartingItems[ItemPrototypes["Armor"]] = 1
-		for j, am in pairs(ArmorModules) do
-			StartingItems[am["Name"]] = am["Count"]
-		end
-		remote.call("freeplay", "set_created_items", StartingItems)
-	end
+	
 
+	if not(settings.global["faster robots"].value == 0) then
+		for k,v in pairs(game.forces) do
+			for z = 1, settings.global["faster robots"].value, 1 do
+				v.technologies["worker-robots-speed-" .. tostring(z)].researched = true
+			end
+		end
+	end
+	
 end)
 
---Other
-script.on_event(defines.events.on_player_created, function(event)
+function EquipArmor(event)
 	local Player = game.players[event.player_index]
-	for i, v in pairs(Items) do
-		if not remote.interfaces["freeplay"] then
-			game.print("Giving item: " .. v[2] .. " x" .. v[1])		
+	local ArmorInventory = Player.get_inventory(defines.inventory.character_armor)
+	
+	if not(ArmorInventory == nil) then --If the player doesn't have armor inventory, the player hasn't spawned, so we can skip this round.
+		for i, v in pairs(Items) do
 			Player.insert{name = v[1], count = v[2]}
 		end
-	end
-
-	local ArmorInventory = Player.get_inventory(defines.inventory.character_armor)
-	if not(ArmorInventory == nil) then
-		local n = ArmorInventory.insert{name=ItemPrototypes["Armor"],count=1}
-		if(n>0)then -- we actually equipped the armor
+		if not(ArmorInventory.is_empty()) then
+			--We want to remove whatever armor they had to slot in what we want.
+			local CurrentArmor = ArmorInventory[1].name
+			ArmorInventory.clear()
+			--Then for good measure we destroy it from the inventory.
+			local PlayerInventory = Player.get_inventory(defines.inventory.character_main)
+			PlayerInventory.remove(CurrentArmor);
+		end
+		local n = 0
+		n = ArmorInventory.insert{name=ItemPrototypes["Armor"],count=1}
+		if(n > 0)then -- we actually equipped the armor
 			local grid=ArmorInventory[1].grid
 			for i,module in pairs(ArmorModules) do
 				for y = 1, module.Count, 1 do
@@ -110,9 +114,14 @@ script.on_event(defines.events.on_player_created, function(event)
 			end
 		end
 	end
+end	
 
-	local grid = player.get_inventory(defines.inventory.player_armor)[1].grid
-	for  i, v in pairs(armor) do
-		grid.put({name = v[1]})
-	end
+--Classic start/no cutscene/multiplayer addition
+script.on_event(defines.events.on_player_created, function(event)
+	EquipArmor(event)
+end)
+
+--Freeplay/Cutscene start
+script.on_event(defines.events.on_cutscene_cancelled, function(event)
+	EquipArmor(event)
 end)
