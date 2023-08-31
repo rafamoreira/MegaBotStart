@@ -15,10 +15,11 @@ local Items
 local ArmorModules = {
 	--Vanilla, 10x10 grid
 	{Name = ItemPrototypes["Reactor"], Count = 4},
+		{Name = ItemPrototypes["Exoskeleton"], Count = 2},
 	{Name = ItemPrototypes["Roboport"], Count = 4},
 	{Name = ItemPrototypes["Battery"], Count = 2},
 	-- {Name = ItemPrototypes["Shield"], Count = 4},
-	{Name = ItemPrototypes["Exoskeleton"], Count = 2},
+
 }
 
 --Personal Equipment gives upgraded options, lets use a few.
