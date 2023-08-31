@@ -1,10 +1,10 @@
 {
-    "name": "MegaBotStart",
-    "version": "0.20.4",
+    "name": "OP Bot Start",
+    "version": "alpha",
     "factorio_version": "1.0",
     "dependencies": [ "base >= 1.0", "? Krastorio2", "? bobwarfare", "? bobequipment", "? boblogistics"  ],
-    "title": "Mega Bot Start",
-    "author": "ZeroSerenity",
+    "title": "OP Bot Start",
+    "author": "rmc",
     "contact": "",
     "homepage": "",
     "description": "Start with power armor, personal roboports, construction robots, portable fusion reactors, batteries, and more. Krastorio 2 gives fuel. Bob's Warfare gives better armor, logistics gives fusion powered robots, personal equipment upgrades the module."
