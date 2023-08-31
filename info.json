@@ -1,9 +1,9 @@
 {
-    "name": "OP Bot Start",
+    "name": "OPBotStart",
     "version": "0.0.1",
     "factorio_version": "1.0",
     "dependencies": [ "base >= 1.0", "? Krastorio2", "? bobwarfare", "? bobequipment", "? boblogistics"  ],
-    "title": "OP Bot Start",
+    "title": "OPBotStart",
     "author": "rmc",
     "contact": "",
     "homepage": "",
